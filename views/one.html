@@ -1,0 +1,18 @@
+<header>
+    <a href="#">&nbsp;</a>
+    <a href="#">MJ</a>
+    <a href="#"><i class="icon iconfont icon-Instagram"></i></a>
+</header>
+<section>
+    <div class="ipt">
+        <b><i class="icon iconfont icon-fangdajing"></i></b>
+        <input type="text" placeholder="搜索美图、教程、话题">
+    </div>  
+    <lunbo></lunbo>
+    <ul class="list">
+        <li ng-repeat="item in list" ui-sref="{{item.href}}"  ng-click="underLine(item)" ng-class="{true:'underline'}[item.flag]">{{item.title}}</li>
+    </ul>
+    <div class="content">
+        <ui-view></ui-view>
+    </div>
+</section>

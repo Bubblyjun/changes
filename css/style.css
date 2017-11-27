@@ -1,0 +1,137 @@
+@charset "utf-8";
+*{
+  margin:0px;
+  padding:0px;
+  text-decoration:none;
+  box-sizing:border-box;
+  font-size:.14rem;
+  font-style:normal;
+  font-weight:normal;
+  font-family:"黑体";
+}
+ul,li{
+  list-style:none;
+}
+html{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size:625%;
+}
+img,div,body,html,ul,li,a{
+ -webkit-touch-callout: none; 
+}
+input,button{
+ outline:0;
+}
+button{
+ cursor:pointer;
+}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+    color: #ccc;
+}
+html,body,.wrap{
+    width:100%;
+    height:100%;
+}
+.wrap{
+   display:flex;
+   flex-direction: column;
+   overflow: hidden;
+}
+header{
+    height:.5rem;
+    width:100%;
+    background: #FA828C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 .1rem;
+}
+header a i.icon,header a{
+    color:#fff;
+    font-size:.2rem;
+}
+section{
+    flex:1;
+}
+.ipt{
+    height:.54rem;
+    width:100%;
+    line-height:.54rem;
+    position: relative;
+}
+.ipt input{
+    width:90%;
+    margin:0 5%;
+    border:1px solid #FD7A8C;
+    border-radius: 15px;
+    height:.32rem;
+    text-align: center;
+}
+.ipt b{
+    position: absolute;
+    left:.3rem;
+    top:.01rem;
+    color:#FD7A8C;
+}
+.banner,.banner img{
+    width:100%;
+    height:1.5rem;
+}
+.list{
+    width:100%;
+    height:.35rem;
+    border:1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.list li{
+    height:.3rem;
+    line-height:.3rem;
+}
+.underline{
+    border-bottom:2px solid #FF9293;
+}
+footer{
+    width:100%;
+    height:.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+footer span{
+    flex:1;
+    background: #fff;
+    color:#FD7A8C;
+    height:.5rem;
+    line-height:.25rem;
+}
+footer span i.icon,footer span b{
+    display: block;
+    text-align: center;
+}
+footer span i.icon{
+    font-size:.2rem;
+}
+.color{
+    background: #FD7A8C;
+    color:#fff;
+}
+.images{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    padding:.1rem .15rem;
+}
+.images li{
+    width:30%;
+    margin:.05rem;
+}
+.images li img{
+    width:100%;
+}

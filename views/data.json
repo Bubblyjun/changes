@@ -1,0 +1,33 @@
+[
+    [
+        {"title":"精选","href":"footone.one"},
+        {"title":"热门","href":"footone.two"},
+        {"title":"最新","href":"footone.three"}
+    ],
+    [
+        [
+            {"img":"img/1.png"},
+            {"img":"img/2.png"},
+            {"img":"img/3.png"},
+            {"img":"img/4.png"},
+            {"img":"img/5.png"},
+            {"img":"img/6.png"}
+        ],
+        [
+            {"img":"img/1.png"},
+            {"img":"img/3.png"},
+            {"img":"img/5.png"}
+        ],
+        [
+            {"img":"img/2.png"},
+            {"img":"img/4.png"},
+            {"img":"img/6.png"}
+        ]
+    ],
+    [
+        {"class":"icon-eyeopen","txt":"推荐","href":"footone"},
+        {"class":"icon-gouwuche","txt":"商城","href":"foottwo"},
+        {"class":"icon-shouye","txt":"社区","href":"footthree"},
+        {"class":"icon-wode","txt":"我的","href":"footfour"}
+    ]
+]

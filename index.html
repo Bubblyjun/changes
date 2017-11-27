@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exercise">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./fonts/iconfont.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/angular-ui-router.js"></script>
+    <script src="./js/swiper.min.js"></script>
+</head>
+<body ng-controller="ctrl">
+    <div class="wrap">
+        <ui-view></ui-view>
+        <footer>
+            <span ng-repeat="item in foot" ng-click="changeColor(item)" ng-class="{true:'color'}[item.flag]" ui-sref="{{item.href}}">
+                <i class="icon iconfont {{item.class}}"></i>
+                <b>{{item.txt}}</b>
+            </span>
+        </footer>
+    </div>
+    <script>
+        var app = angular.module('exercise',['ui.router']);
+        app.config(function($stateProvider,$urlRouterProvider){
+            $urlRouterProvider.when('','/footone/one')
+            $urlRouterProvider.when('/footone','/footone/one')
+            $stateProvider
+                .state('footone.one',{
+                    url:'/one',
+                    template:`<ul class="images">
+                        <li ng-repeat="item in imgsone"><img ng-src="{{item.img}}"></li>
+                    </ul>`,
+                    controller:function($scope,$http,$state){
+                        // $state.go('footone.one')
+                        $http({
+                            url:'http://localhost:8800/one',
+                            method:'get'
+                        }).then(function(response){
+                            $scope.imgsone = response.data[1][0];
+                        })
+                    }
+                })
+                .state('footone.two',{
+                    url:'two',
+                    template:`<ul class="images">
+                        <li ng-repeat="item in imgstwo"><img ng-src="{{item.img}}"></li>
+                    </ul>`,
+                    controller:function($scope,$http){
+                        $http({
+                            url:'http://localhost:8800/two',
+                            method:'get'
+                        }).then(function(response){
+                            $scope.imgstwo = response.data[1][1];
+                        })
+                    }
+                })
+                .state('footone.three',{
+                    url:'three',
+                    template:`<ul class="images">
+                        <li ng-repeat="item in imgsthree"><img ng-src="{{item.img}}"></li>
+                    </ul>`,
+                    controller:function($scope,$http){
+                        $http({
+                            url:'http://localhost:8800/three',
+                            method:'get'
+                        }).then(function(response){
+                            $scope.imgsthree = response.data[1][2];
+                        })
+                    }
+                })
+                .state('footone',{
+                    url:'/footone',
+                    templateUrl:'views/one.html'
+                })
+                .state('foottwo',{
+                    url:'/foottwo',
+                    template:'<div>商城</div>'
+                })
+                .state('footthree',{
+                    url:'/footthree',
+                    template:'<div>社区</div>'
+                })
+                .state('footfour',{
+                    url:'/footfour',
+                    template:'<div>我的</div>'
+                })
+        })
+        app.controller('ctrl',function($scope,$http){
+            $http({
+                method:'get',
+                url:'http://localhost:8800/data'
+            }).then(function(response){
+                $scope.list = response.data[0];
+                $scope.foot = response.data[2];
+                $scope.foot[0].flag = true;
+                $scope.list[0].flag = true;
+            },function(err){
+                console.log(err);
+            })
+            $scope.changeColor = function(item){
+                for(var i=0;i<$scope.foot.length;i++){
+                    $scope.foot[i].flag = false;
+                }
+                item.flag = true;
+            }
+            $scope.underLine = function(item){
+                for(var i=0;i<$scope.list.length;i++){
+                    $scope.list[i].flag = false;
+                }
+                item.flag = true;
+            }
+        })
+        
+        //轮播图指令        
+        app.directive('lunbo',function(){
+            return{
+                restrict:"E",
+                templateUrl:'./views/swiper.html',
+                link:function(){
+                    var swiper = new Swiper('.banner',{
+                        loop:true,
+                        autoplay:1000,
+                        pagination:".swioer-pagination"
+                    })
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
